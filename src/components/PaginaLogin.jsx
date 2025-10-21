@@ -22,7 +22,7 @@ function PaginaLogin({setIsAuthenticated}) {
             <form action="#" method="POST">
                 
                 <div className="mb-3">
-                    <label for="email" className="form-label fw-semibold">Correo Electrónico</label>
+                    <label forhtml="email" className="form-label fw-semibold">Correo Electrónico</label>
                     <div className="input-group">
                         <span className="input-group-text"><i className="bi bi-envelope-fill"></i></span>
                         <input type="email" className="form-control" id="email" placeholder="nombre@ejemplo.com" required />
@@ -30,7 +30,7 @@ function PaginaLogin({setIsAuthenticated}) {
                 </div>
 
                 <div className="mb-3">
-                    <label for="password" className="form-label fw-semibold">Contraseña</label>
+                    <label forhtml="password" className="form-label fw-semibold">Contraseña</label>
                     <div className="input-group">
                         <span className="input-group-text"><i className="bi bi-lock-fill"></i></span>
                         <input type="password" className="form-control" id="password" placeholder="Ingresa tu contraseña" required />
@@ -40,7 +40,7 @@ function PaginaLogin({setIsAuthenticated}) {
                 <div className="d-flex justify-content-between align-items-center mb-4">
                     <div className="form-check">
                         <input className="form-check-input" type="checkbox" value="" id="rememberMe" />
-                        <label className="form-check-label" for="rememberMe">
+                        <label className="form-check-label" forhtml="rememberMe">
                             Recordarme
                         </label>
                     </div>

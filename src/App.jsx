@@ -14,7 +14,7 @@ import Productos from './components/Productos';
 import Header from './components/Header';
 import Main from './components/PaginaProductos';
 import Footer from './components/Footer';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
 import PaginaInicio from './components/PaginaInicio';
 import PaginaProductos from './components/PaginaProductos';
 import PaginaCarrito from './components/PaginaCarrito';
@@ -36,10 +36,10 @@ function App() {
   const [isAuthenticated,setIsAuthenticated]=useState(false);
   
   return (  
-    <Router>
+    
       <div>
-        <Routes>
-          <Route path="/" element={<PaginaInicio />} />
+        <Routes>          
+          <Route exact path="/" element={<PaginaInicio />} />
           <Route path="/products" element={<PaginaProductos />} />
           <Route path="/cart" element={<PaginaCarrito></PaginaCarrito> } />
           <Route path="/about" element={<PaginaAcercaDe></PaginaAcercaDe> } />
@@ -49,7 +49,7 @@ function App() {
           <Route path="/admin" element={<RutaProtegida isAuthenticated={isAuthenticated}><Admin setIsAuthenticated={setIsAuthenticated}></Admin></RutaProtegida> } />
         </Routes>
       </div>
-    </Router>
+    
 
     
     
