@@ -9,10 +9,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate, BrowserRouter } from 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>    
-      <CarritoProvider>
-        
-        <App />  
-        
+    <CarritoProvider>        
+      <App />          
     </CarritoProvider>
   </StrictMode>,
 )

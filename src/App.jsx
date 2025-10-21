@@ -38,19 +38,20 @@ function App() {
   return (  
     
       <div>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <Router>
+          <Routes>          
+            <Route exact path="/" element={<PaginaInicio />} />
+            <Route path="/products" element={<PaginaProductos />} />
+            <Route path="/cart" element={<PaginaCarrito></PaginaCarrito> } />
+            <Route path="/about" element={<PaginaAcercaDe></PaginaAcercaDe> } />
+            <Route path="/contact" element={<PaginaContacto></PaginaContacto> } />
+            <Route path="/products/:id" element={<ProductoDetalle /> } />
+            <Route path="/login" element={isAuthenticated ? <Navigate to="/admin" replace></Navigate> : <PaginaLogin setIsAuthenticated={setIsAuthenticated} /> } />
+            <Route path="/admin" element={<RutaProtegida isAuthenticated={isAuthenticated}><Admin setIsAuthenticated={setIsAuthenticated}></Admin></RutaProtegida> } />
+          </Routes>
+        </Router>       
         
-        <Routes>          
-          <Route exact path="/" element={<PaginaInicio />} />
-          <Route path="/products" element={<PaginaProductos />} />
-          <Route path="/cart" element={<PaginaCarrito></PaginaCarrito> } />
-          <Route path="/about" element={<PaginaAcercaDe></PaginaAcercaDe> } />
-          <Route path="/contact" element={<PaginaContacto></PaginaContacto> } />
-          <Route path="/products/:id" element={<ProductoDetalle /> } />
-          <Route path="/login" element={isAuthenticated ? <Navigate to="/admin" replace></Navigate> : <PaginaLogin setIsAuthenticated={setIsAuthenticated} /> } />
-          <Route path="/admin" element={<RutaProtegida isAuthenticated={isAuthenticated}><Admin setIsAuthenticated={setIsAuthenticated}></Admin></RutaProtegida> } />
-        </Routes>
-        </BrowserRouter>
+        
       </div>
     
 
