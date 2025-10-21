@@ -38,7 +38,7 @@ function App() {
   return (  
     
       <div>
-        <Router>
+        
           <Routes>          
             <Route exact path="/" element={<PaginaInicio />} />
             <Route path="/products" element={<PaginaProductos />} />
@@ -49,7 +49,6 @@ function App() {
             <Route path="/login" element={isAuthenticated ? <Navigate to="/admin" replace></Navigate> : <PaginaLogin setIsAuthenticated={setIsAuthenticated} /> } />
             <Route path="/admin" element={<RutaProtegida isAuthenticated={isAuthenticated}><Admin setIsAuthenticated={setIsAuthenticated}></Admin></RutaProtegida> } />
           </Routes>
-        </Router>       
         
         
       </div>

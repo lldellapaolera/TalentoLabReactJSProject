@@ -5,12 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App.jsx'
 import { CarritoProvider } from './context/CarritoContext.jsx';
 import { BrowserRouter as Router, Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
-
+import.meta.env.VITE_PUBLIC_URL;
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>    
+    <Router>
     <CarritoProvider>        
       <App />          
     </CarritoProvider>
+    </Router>
   </StrictMode>,
 )
