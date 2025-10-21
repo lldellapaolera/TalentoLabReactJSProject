@@ -38,6 +38,8 @@ function App() {
   return (  
     
       <div>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        
         <Routes>          
           <Route exact path="/" element={<PaginaInicio />} />
           <Route path="/products" element={<PaginaProductos />} />
@@ -48,6 +50,7 @@ function App() {
           <Route path="/login" element={isAuthenticated ? <Navigate to="/admin" replace></Navigate> : <PaginaLogin setIsAuthenticated={setIsAuthenticated} /> } />
           <Route path="/admin" element={<RutaProtegida isAuthenticated={isAuthenticated}><Admin setIsAuthenticated={setIsAuthenticated}></Admin></RutaProtegida> } />
         </Routes>
+        </BrowserRouter>
       </div>
     
 
