@@ -9,10 +9,10 @@ import.meta.env.VITE_PUBLIC_URL;
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>    
-    <BrowserRouter basename='/'>
+    <Router basename='/'>
     <CarritoProvider>        
       <App />          
     </CarritoProvider>
-    </BrowserRouter>
+    </Router>
   </StrictMode>
 )
