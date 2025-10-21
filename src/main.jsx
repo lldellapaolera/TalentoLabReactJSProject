@@ -9,7 +9,7 @@ import { HashRouter  as Router, Routes, Route, Navigate } from 'react-router-dom
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>    
-    <Router basename='/'>
+    <Router basename='/TalentoLabReactJSProject'>
     <CarritoProvider>        
       <App />          
     </CarritoProvider>
