@@ -24,7 +24,7 @@ function Footer() {
         </li> 
       </ul> 
       <p className="text-center text-body-secondary">
-        &copy; 2025 TalentoLab E-Commerce, Inc
+        &copy; 2025 TalentoLab E-Commerce, Inccc
       </p> 
     </footer> 
     
