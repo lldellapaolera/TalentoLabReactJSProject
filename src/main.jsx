@@ -10,7 +10,7 @@ import.meta.env.VITE_PUBLIC_URL;
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>    
-    <BrowserRouter basename={"/TalentoLabReactJSProject/"}>
+    <BrowserRouter basename={"//"}>
       <ProductsProvider>
         <CarritoProvider>        
           <App />          
