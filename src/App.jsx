@@ -23,7 +23,11 @@ import PaginaAcercaDe from './components/PaginaAcercaDe';
 import ProductoDetalle from './components/ProductoDetalle';
 import PaginaLogin from './components/PaginaLogin';
 import Admin from './components/Admin';
-import RutaProtegida from './components/RutaProtegida';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
+//import FormularioProducto from './components/FormularioProducto';
+import { ProductsContext, ProductsProvider } from './context/ProductsContext';
+//import RutaProtegida from './components/RutaProtegida';
 
 
 
@@ -33,13 +37,46 @@ import RutaProtegida from './components/RutaProtegida';
 function App() {
   const carritoInicial = [];
   const [carrito,setCarrito]=useState(carritoInicial);
-  const [isAuthenticated,setIsAuthenticated]=useState(false);
+  //const [isAuthenticated,setIsAuthenticated]=useState(false);
+
+  
   
   return (  
+
     
+    
+    
+        
       <div>
         
-          <Routes>          
+        
+          <AuthProvider>          
+            {/* <Router> */}
+              <Routes>
+                <Route path='/login' element={<PaginaLogin />} />
+                <Route path='/admin' element={<ProtectedRoute><ProductsProvider><Admin></Admin></ProductsProvider></ProtectedRoute>} />
+                <Route exact path="/" element={<PaginaInicio />} />
+                <Route path="/products" element={<PaginaProductos />} />
+                <Route path="/cart" element={<PaginaCarrito></PaginaCarrito> } />
+                <Route path="/about" element={<PaginaAcercaDe></PaginaAcercaDe> } />
+                <Route path="/contact" element={<PaginaContacto></PaginaContacto> } />
+                <Route path="/products/:id" element={<ProductoDetalle /> } />
+                {/* <Route path="/agregar-producto" element={
+                  <ProductsProvider>
+                    <FormularioProducto></FormularioProducto>
+                  </ProductsProvider> 
+                } /> */}
+                
+                
+                
+              </Routes>
+            {/* </Router> */}
+          </AuthProvider>
+
+        
+        
+        
+          {/* <Routes>          
             <Route exact path="/" element={<PaginaInicio />} />
             <Route path="/products" element={<PaginaProductos />} />
             <Route path="/cart" element={<PaginaCarrito></PaginaCarrito> } />
@@ -48,7 +85,7 @@ function App() {
             <Route path="/products/:id" element={<ProductoDetalle /> } />
             <Route path="/login" element={isAuthenticated ? <Navigate to="/admin" replace></Navigate> : <PaginaLogin setIsAuthenticated={setIsAuthenticated} /> } />
             <Route path="/admin" element={<RutaProtegida isAuthenticated={isAuthenticated}><Admin setIsAuthenticated={setIsAuthenticated}></Admin></RutaProtegida> } />
-          </Routes>
+          </Routes> */}
         
         
       </div>

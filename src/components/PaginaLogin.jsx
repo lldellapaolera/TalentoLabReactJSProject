@@ -1,10 +1,29 @@
+
+
 import Header from "./Header";
 import Footer from "./Footer";
+import { useState } from "react";
 
-function PaginaLogin({setIsAuthenticated}) {
-  const autenticar = () => {
-    setIsAuthenticated(true);
-  };
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../context/AuthContext";
+
+function PaginaLogin() {
+
+    const [usuario, setUsuario] = useState('');
+    const [password, setPassword] = useState('');
+    const {login} = useAuthContext();
+    const navigate = useNavigate(); 
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Simulación de autenticación 
+        if (usuario === 'admin' && password === '1234') {
+            login(usuario); 
+            navigate('/admin');
+        } else {
+            alert('Credenciales incorrectas');
+        }
+    };
 
   return ( 
   <div>
@@ -19,13 +38,21 @@ function PaginaLogin({setIsAuthenticated}) {
                 <p className="text-muted">Accede a tu cuenta de Talento Tech</p>
             </div>
 
-            <form action="#" method="POST">
+            <form onSubmit={handleSubmit}>
                 
                 <div className="mb-3">
-                    <label forhtml="email" className="form-label fw-semibold">Correo Electrónico</label>
+                    <label forhtml="usuario" className="form-label fw-semibold">Usuario</label>
                     <div className="input-group">
                         <span className="input-group-text"><i className="bi bi-envelope-fill"></i></span>
-                        <input type="email" className="form-control" id="email" placeholder="nombre@ejemplo.com" required />
+                        <input 
+                            type="text" 
+                            className="form-control" 
+                            id="usuario" 
+                            placeholder="user" 
+                            value={usuario} 
+                            onChange={(e) => setUsuario(e.target.value)} 
+                            required 
+                        />
                     </div>
                 </div>
 
@@ -33,7 +60,7 @@ function PaginaLogin({setIsAuthenticated}) {
                     <label forhtml="password" className="form-label fw-semibold">Contraseña</label>
                     <div className="input-group">
                         <span className="input-group-text"><i className="bi bi-lock-fill"></i></span>
-                        <input type="password" className="form-control" id="password" placeholder="Ingresa tu contraseña" required />
+                        <input type="password" className="form-control" id="password" placeholder="Ingresa tu contraseña" value={password} onChange={(e) => setPassword(e.target.value)} required />
                     </div>
                 </div>
 
@@ -51,7 +78,7 @@ function PaginaLogin({setIsAuthenticated}) {
                     {/* <button type="submit" className="btn btn-primary btn-lg">
                         <i className="bi bi-box-arrow-in-right me-2"></i> Entrar
                     </button> */}
-                    <button onClick={autenticar} className="btn btn-primary btn-lg">
+                    <button type="submit" className="btn btn-primary btn-lg">
                         <i className="bi bi-box-arrow-in-right me-2"></i> Entrar
                     </button>
                 </div>
@@ -69,3 +96,39 @@ function PaginaLogin({setIsAuthenticated}) {
   );
 }
 export default PaginaLogin
+
+
+// import React, { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import { useAuthContext } from '../context/AuthContext';
+// function Login() {
+//     const [usuario, setUsuario] = useState('');
+//     const [password, setPassword] = useState('');
+//     const { login } = useAuthContext();
+//     const navigate = useNavigate(); const handleSubmit = (e) => {
+//         e.preventDefault();
+//         // Simulación de autenticación 
+//         if (usuario === 'admin' && password === '1234') {
+//             login(usuario); navigate('/dashboard');
+//         } else {
+//             alert('Credenciales incorrectas');
+//         }
+//     };
+//     return (
+//         <form onSubmit={handleSubmit}>
+//             <h2>Iniciar sesión</h2>
+//             <div>
+//                 <label>Usuario:</label>
+//                 <input type="text" value={usuario} onChange={(e) => setUsuario(e.target.value)} />
+//             </div>
+//             <div>
+//                 <label>Contraseña:</label>
+//                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+//             </div>
+//             <button type="submit">Iniciar sesión</button>
+//         </form>
+//     );
+// }
+// export default Login;
+
+
