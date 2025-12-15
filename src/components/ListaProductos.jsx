@@ -88,7 +88,7 @@ function ListaProductos() {
             {/* <FormularioProducto></FormularioProducto> */}
             {/* <FormularioAgregarProducto></FormularioAgregarProducto> */}
 
-            
+            <FormularioProducto onCerrar={onCerrarAgregarProducto}></FormularioProducto>            
             
             <h2>Lista de productos</h2>
             {/* <button onClick={() => setearModoAdicion('agregar')} className="btn btn-link">Agregar producto</button> */}
@@ -146,8 +146,8 @@ function ListaProductos() {
                 
             </table> */}
 
-            <FormularioProducto onCerrar={onCerrarAgregarProducto}></FormularioProducto>
-            <FormularioProducto modo='edicion' productoInicial={productoInicial}></FormularioProducto>
+            
+            {/* <FormularioProducto modo='edicion' productoInicial={productoInicial}></FormularioProducto> */}
                  
             
         </div> 

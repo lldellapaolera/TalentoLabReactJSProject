@@ -79,11 +79,14 @@ export const ProductsProvider = ({ children }) => {
                     //throw new Error('Error al eliminar el producto.'); 
                 //} 
                 alert('Producto eliminado correctamente.'); 
+                return true;
             } catch (error) { 
                 console.error(error.message); 
                 alert('Hubo un problema al eliminar el producto.'); 
-            } 
+            }
+            
         } 
+        return false;
     };
 
     const agregarProductoAPI= async (producto) => { 
@@ -120,8 +123,10 @@ export const ProductsProvider = ({ children }) => {
     }; 
     
     const eliminarProducto = (id) => {
-        eliminarProductoAPI(id);
-        setProductos(productos.filter((producto) => producto.id !== id)); 
+        if(eliminarProductoAPI(id)){
+            setProductos(productos.filter((producto) => producto.id !== id)); 
+        }
+        
         
     }; 
     return ( 

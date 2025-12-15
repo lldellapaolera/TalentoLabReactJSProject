@@ -5,8 +5,7 @@ function FormularioProducto( { productoInicial = {}, modo = 'agregar', onCerrar 
     const [producto, setProducto] = useState(productoInicial); 
     const { agregarProducto, editarProducto } = useContext(ProductsContext); 
     
-    //setProducto(productoInicial);
-    producto.name=productoInicial.name;
+    
 
     const handleChange = (e) => { 
         const { name, value } = e.target; 

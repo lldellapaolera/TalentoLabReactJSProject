@@ -61,7 +61,7 @@ function FormularioEdicion({ productoSeleccionado, onActualizar }) {
                     <label>Descripción:</label> 
                     <textarea name="description" value={producto.description || ''} onChange={handleChange} required /> 
                 </div> 
-                <button type="submit">Actualizar</button> | <button onClick={()=>cancelEditing()}>Cancelar</button>
+                <button type="submit">Actualizar</button> | <button type="button" onClick={()=>cancelEditing()}>Cancelar</button>
             </form> 
             
             </>) : (<>
