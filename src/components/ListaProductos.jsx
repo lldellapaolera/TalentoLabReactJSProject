@@ -3,7 +3,7 @@ import BotonEliminarProducto from './BotonEliminarProducto';
 import FormularioEdicion from './FormularioEdicion';
 //import FormularioProducto from './FormularioProducto';
 
-import FormularioEditarProducto from './FormularioEditarProducto';
+//import FormularioEditarProducto from './FormularioEditarProducto';
 import FormularioAgregarProducto from './FormularioAgregarProducto';
 import FormularioProducto from './FormularioProducto';
 import { ProductsContext } from '../context/ProductsContext';
@@ -21,7 +21,7 @@ function ListaProductos() {
     const { eliminarProducto, productos } = useContext(ProductsContext)
     const [modo, setModo] = useState('agregar'); 
     const [productoInicial, setProductoInicial] = useState({}); 
-    //const [productos, setProductos] = useState([]); 
+    const [producto, setProducto] = useState({}); 
 
     
 
@@ -64,11 +64,10 @@ function ListaProductos() {
     //     fetchProductos();
     // }, []); 
 
-    // function setearModoEdicion(modo,producto){
-    //     setProductoInicial(producto);
-    //     setModo(modo);
-
-    // }
+    function setearModoEdicion(p){
+        setProductoInicial(p);   
+        console.log("producto seteado para edicion")
+    }
 
     // function setearModoAdicion(modo){
     //     setModo(modo);
@@ -79,7 +78,7 @@ function ListaProductos() {
 
     
     function onCerrarAgregarProducto(){
-        
+
     }
 
     
@@ -96,16 +95,17 @@ function ListaProductos() {
             <ul style={{ listStyleType: "none" }}>
                 {
                     productos.map((producto) => (
-                        <li key={producto.id}>
-                            <strong>
-                                {producto.name}
-                            </strong>: 
-                            ${producto.price}
-                            <p>{producto.description}</p>
-                            <button onClick={()=>setearModoEdicion('editar',producto)} className="btn btn-link btn-adicion">Editar</button> |
-                            <button onClick={()=>eliminarProducto(producto.id)} className="btn btn-link">Eliminar</button>
+                        <FormularioEdicion key={producto.id} productoSeleccionado={producto}></FormularioEdicion>
+                        // <li key={producto.id}>
+                        //     <strong>
+                        //         {producto.name}
+                        //     </strong>: 
+                        //     ${producto.price}
+                        //     <p>{producto.description}</p>
+                        //     <button onClick={()=>setearModoEdicion(producto)} className="btn btn-link btn-adicion">Editar</button> |
+                        //     <button onClick={()=>eliminarProducto(producto.id)} className="btn btn-link">Eliminar</button>
                             
-                        </li>
+                        // </li>
                     ))
                 }
             </ul>
@@ -147,6 +147,7 @@ function ListaProductos() {
             </table> */}
 
             <FormularioProducto onCerrar={onCerrarAgregarProducto}></FormularioProducto>
+            <FormularioProducto modo='edicion' productoInicial={productoInicial}></FormularioProducto>
                  
             
         </div> 

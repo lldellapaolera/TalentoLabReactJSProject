@@ -27,6 +27,7 @@ import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 //import FormularioProducto from './components/FormularioProducto';
 import { ProductsContext, ProductsProvider } from './context/ProductsContext';
+//import FormularioEditarProducto from './components/FormularioEditarProducto';
 //import RutaProtegida from './components/RutaProtegida';
 
 
@@ -61,6 +62,7 @@ function App() {
                 <Route path="/about" element={<PaginaAcercaDe></PaginaAcercaDe> } />
                 <Route path="/contact" element={<PaginaContacto></PaginaContacto> } />
                 <Route path="/products/:id" element={<ProductoDetalle /> } />
+                
                 {/* <Route path="/agregar-producto" element={
                   <ProductsProvider>
                     <FormularioProducto></FormularioProducto>

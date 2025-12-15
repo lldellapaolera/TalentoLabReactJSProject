@@ -37,25 +37,35 @@ export const ProductsProvider = ({ children }) => {
                 } 
             }; 
 
-            const fetchProductos1 = async (id) => { 
-                try { const respuesta = await fetch('https://68f643aa6b852b1d6f16ac75.mockapi.io/Productos'); 
-                    if (!respuesta.ok) { 
-                        throw new Error('Error al obtener los productos.'); 
-                    } 
-                    const data = await respuesta.json(); 
-                    setProductos(data); 
-                } 
-                catch (error) { 
-                    console.error(error.message); 
-                } 
-            }; 
+            
 
             fetchProductos();
 
 
         }, []); 
 
-    
+    const editarProducto = (productoActualizado) => {
+        try { 
+            const respuesta = fetch(`https://68f643aa6b852b1d6f16ac75.mockapi.io/Productos/${productoActualizado.id}`, {
+                method: 'PUT', 
+                headers: { 'Content-Type': 'application/json', }, 
+                body: JSON.stringify(productoActualizado), }); 
+            // if (!respuesta.ok) { 
+            //     throw new Error('Error al actualizar el producto.'); 
+            // } 
+            //const data = respuesta.json(); 
+            //onActualizar(data); 
+            alert('Producto actualizado correctamente.'); 
+            setProductos( 
+                productos.map((producto) => producto.id === productoActualizado.id ? productoActualizado : producto)
+            );
+        
+        } 
+        catch (error) { 
+            console.error(error.message); 
+            alert('Hubo un problema al actualizar el producto.'); 
+        } 
+    };
 
     const eliminarProductoAPI = (id) => { 
         const confirmar = window.confirm('¿Estás seguro de que deseas eliminar este producto?'); 
@@ -108,13 +118,7 @@ export const ProductsProvider = ({ children }) => {
         setProductos([...productos, nuevoProducto]); 
         //console.log("producto agregado")
     }; 
-    const editarProducto = (productoActualizado) => { 
-        setProductos( 
-            productos.map(
-                (producto) => producto.id === productoActualizado.id ? productoActualizado : producto
-    ) 
-    ); 
-    }; 
+    
     const eliminarProducto = (id) => {
         eliminarProductoAPI(id);
         setProductos(productos.filter((producto) => producto.id !== id)); 
